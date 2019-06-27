@@ -1,0 +1,33 @@
+#include "mbed.h"
+BusOut Display(PTC6, PTC5, PTC16, PTA16, PTA17, PTC10, PTC11, PTC13);
+DigitalOut vdd(PTC17);
+void setvdd()
+{
+    vdd=1;
+}
+    int main()
+{
+        while (1)
+{ setvdd()
+        Disp1 = 0xC0;
+        wait(0.9);
+        Disp1 = 0xF9;
+        wait(0.9);
+        Disp1 = 0xA4;
+        wait(0.9);
+        Disp1 = 0xB0;
+        wait(0.9);
+        Disp1 = 0x99;
+        wait(0.9);
+        Disp1 = 0x92;
+        wait(0.9);
+        Disp1 = 0x82;
+        wait(0.9);
+        Disp1 =0xF8;
+        wait(0.9);
+        Disp1 = 0x80;
+        wait(0.9);
+        Disp1 = 0x90;
+        wait(0.9);
+}
+}
