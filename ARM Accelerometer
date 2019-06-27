@@ -1,0 +1,38 @@
+#include "mbed.h"
+#include "MMA8451Q.h" 
+DigitalOut myled1(LED1);
+DigitalOut myled2(LED2);
+DigitalOut myled3(LED3);
+MMA8451Q acc(PTE25, PTE24, 0x1d<<1);
+
+int main() 
+{
+    myled1 = 1;
+    myled2 = 1;
+    myled3 = 1;
+    float x=0;
+    while(1) 
+    {
+        x = abs(acc.getAccX());
+        wait(0.1);
+        if(x<0.2)
+        {
+            myled1 = 0;
+            myled2 = 1;
+            myled3 = 1;
+        }
+        else if(x>0.2 && x<0.6)
+        {
+            myled1 = 1;
+            myled2 = 0;
+            myled3 = 1;         
+        }
+        else if(x>0.6)
+        {
+            myled1 = 1;
+            myled2 = 1;
+            myled3 = 0;
+        }
+    }
+
+}
