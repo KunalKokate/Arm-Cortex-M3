@@ -1,0 +1,48 @@
+#include "mbed.h"
+
+PwmOut myled1(LED1);
+PwmOut myled2(LED2);
+PwmOut myled3(LED3);
+
+int main() {
+    float p;
+    while(1) {
+        
+        for (p=1.0; p>=0.0; p=p-0.1)
+        {
+            myled1 = p;
+            wait(0.2);
+        }
+        for (p=0.0; p<=1.0; p=p+0.1)
+        {
+            myled1 = p;
+            wait(0.2);
+        }     
+        myled1 = 1;
+        
+        for (p=1.0; p>=0.0; p=p-0.1)
+        {
+            myled2 = p;
+            wait(0.2);
+        }
+        for (p=0.0; p<=1.0; p=p+0.1)
+        {
+            myled2 = p;
+            wait(0.2);
+        }
+        myled2 = 1;
+        
+        for (p=1.0; p>=0.0; p=p-0.1)
+        {
+            myled3 = p;
+            wait(0.2);
+        }
+        for (p=0.0; p<=1.0; p=p+0.1)
+        {
+            myled3 = p;
+            wait(0.2);
+        }
+        myled3 = 1;
+        
+    }
+}
