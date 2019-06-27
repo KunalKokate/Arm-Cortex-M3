@@ -1,0 +1,41 @@
+#include "mbed.h"
+#include "TSISensor.h"
+DigitalOut myled1(LED1);
+DigitalOut myled2(LED2);
+DigitalOut myled3(LED3);
+TSISensor tsi;
+
+int main() {
+    myled1 = 1;
+    myled2 = 1;
+    myled3 = 1;
+    float cap;
+    while(1) 
+    {
+        myled1 = 1;
+        myled2 = 1;
+        myled3 = 1;
+        cap = tsi.readPercentage();
+        if(cap>0.0 && cap<0.33)
+        {
+            myled1 = 0;
+            myled2=1;
+            myled3=1;
+            wait(0.5);
+        }
+        if(cap>0.33 && cap<0.66)
+        {
+            myled1=1;
+            myled3=1;
+            myled2 = 0;
+            wait(.5);
+        }
+        if(cap>0.66 && cap<1.0)
+        {
+            myled1=1;
+            myled2=1;
+            myled3 = 0;
+            wait(.5);
+        }
+    }
+}
